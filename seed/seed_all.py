@@ -98,6 +98,21 @@ RESTAURANTS = [
             "sunday": "10:00-22:00",
         },
     },
+    {
+        "name": "Khaymat al Hamich",
+        "phone": "039 67 89 01",
+        "email": "khaymat.hamich@mayda.dz",
+        "description": "Campement bédouin authentique aux portes du Sahara. Dîners sous les étoiles, méchoui traditionnel et musique gnawa. Une expérience immersive unique en Algérie.",
+        "operatingHours": {
+            "monday": "17:00-01:00",
+            "tuesday": "17:00-01:00",
+            "wednesday": "17:00-01:00",
+            "thursday": "17:00-01:00",
+            "friday": "17:00-02:00",
+            "saturday": "16:00-02:00",
+            "sunday": "17:00-00:00",
+        },
+    },
 ]
 
 USERS = {
@@ -138,106 +153,43 @@ USERS = {
             "phone": 711111114,
             "ri": 3,
         },
+        {
+            "firstName": "Yanis",
+            "lastName": "Messaoudi",
+            "email": "yanis.messaoudi@mayda.dz",
+            "phone": 711111115,
+            "ri": 4,
+        },
     ],
     "staff": [
-        {
-            "firstName": "Ahmed",
-            "lastName": "Zerrouki",
-            "phone": 722222221,
-            "role": "WAITER",
-        },
-        {
-            "firstName": "Fatima",
-            "lastName": "Amirouche",
-            "phone": 722222222,
-            "role": "WAITER",
-        },
-        {
-            "firstName": "Hocine",
-            "lastName": "Mokhtar",
-            "phone": 722222223,
-            "role": "CHEF",
-        },
-        {
-            "firstName": "Lynda",
-            "lastName": "Slimani",
-            "phone": 722222224,
-            "role": "CHEF",
-        },
-        {
-            "firstName": "Rachid",
-            "lastName": "Bouhafs",
-            "phone": 722222225,
-            "role": "WAITER",
-        },
-        {
-            "firstName": "Samira",
-            "lastName": "Belkacem",
-            "phone": 722222226,
-            "role": "WAITER",
-        },
-        {
-            "firstName": "Yacine",
-            "lastName": "Khelifa",
-            "phone": 722222227,
-            "role": "CHEF",
-        },
-        {
-            "firstName": "Warda",
-            "lastName": "Bouchareb",
-            "phone": 722222228,
-            "role": "CHEF",
-        },
+        {"firstName": "Ahmed", "lastName": "Zerrouki", "phone": 722222221, "role": "WAITER"},
+        {"firstName": "Fatima", "lastName": "Amirouche", "phone": 722222222, "role": "WAITER"},
+        {"firstName": "Hocine", "lastName": "Mokhtar", "phone": 722222223, "role": "CHEF"},
+        {"firstName": "Lynda", "lastName": "Slimani", "phone": 722222224, "role": "CHEF"},
+        {"firstName": "Rachid", "lastName": "Bouhafs", "phone": 722222225, "role": "WAITER"},
+        {"firstName": "Samira", "lastName": "Belkacem", "phone": 722222226, "role": "WAITER"},
+        {"firstName": "Yacine", "lastName": "Khelifa", "phone": 722222227, "role": "CHEF"},
+        {"firstName": "Warda", "lastName": "Bouchareb", "phone": 722222228, "role": "CHEF"},
+        {"firstName": "Hakim", "lastName": "Bensalem", "phone": 722222229, "role": "WAITER"},
+        {"firstName": "Malika", "lastName": "Oussedik", "phone": 722222230, "role": "WAITER"},
+        {"firstName": "Sofiane", "lastName": "Ait Ali", "phone": 722222231, "role": "CHEF"},
+        {"firstName": "Nora", "lastName": "Hadjadj", "phone": 722222232, "role": "CHEF"},
+        {"firstName": "Redouane", "lastName": "Kaci", "phone": 722222233, "role": "WAITER"},
+        {"firstName": "Zahra", "lastName": "Mokhtari", "phone": 722222234, "role": "WAITER"},
+        {"firstName": "Aziz", "lastName": "Benmohamed", "phone": 722222235, "role": "CHEF"},
+        {"firstName": "Karima", "lastName": "Toubal", "phone": 722222236, "role": "CHEF"},
+        {"firstName": "Lamine", "lastName": "Dib", "phone": 722222237, "role": "WAITER"},
+        {"firstName": "Nassima", "lastName": "Hallal", "phone": 722222238, "role": "WAITER"},
+        {"firstName": "Farid", "lastName": "Boualem", "phone": 722222239, "role": "CHEF"},
+        {"firstName": "Kenza", "lastName": "Mazouni", "phone": 722222240, "role": "CHEF"},
     ],
     "clients": [
-        {
-            "firstName": "Mohamed",
-            "lastName": "Said",
-            "email": "mohamed.said@email.com",
-            "phone": 733333331,
-        },
-        {
-            "firstName": "Sarah",
-            "lastName": "Mebarki",
-            "email": "sarah.mebarki@email.com",
-            "phone": 733333332,
-        },
-        {
-            "firstName": "Amine",
-            "lastName": "Hadj",
-            "email": "amine.hadj@email.com",
-            "phone": 733333333,
-        },
-        {
-            "firstName": "Lina",
-            "lastName": "Boumediene",
-            "email": "lina.boumediene@email.com",
-            "phone": 733333334,
-        },
-        {
-            "firstName": "Reda",
-            "lastName": "Ziani",
-            "email": "reda.ziani@email.com",
-            "phone": 733333335,
-        },
-        {
-            "firstName": "Meriem",
-            "lastName": "Akli",
-            "email": "meriem.akli@email.com",
-            "phone": 733333336,
-        },
-        {
-            "firstName": "Ilyes",
-            "lastName": "Tahar",
-            "email": "ilyes.tahar@email.com",
-            "phone": 733333337,
-        },
-        {
-            "firstName": "Sofia",
-            "lastName": "Chennouf",
-            "email": "sofia.chennouf@email.com",
-            "phone": 733333338,
-        },
+        {"firstName": "Mohamed", "lastName": "Said", "email": "mohamed.said@email.com", "phone": 733333331},
+        {"firstName": "Sarah", "lastName": "Mebarki", "email": "sarah.mebarki@email.com", "phone": 733333332},
+        {"firstName": "Amine", "lastName": "Hadj", "email": "amine.hadj@email.com", "phone": 733333333},
+        {"firstName": "Lina", "lastName": "Boumediene", "email": "lina.boumediene@email.com", "phone": 733333334},
+        {"firstName": "Reda", "lastName": "Ziani", "email": "reda.ziani@email.com", "phone": 733333335},
+        {"firstName": "Meriem", "lastName": "Akli", "email": "meriem.akli@email.com", "phone": 733333336},
     ],
 }
 
@@ -248,8 +200,6 @@ CLIENT_ADDRESSES = [
     {"street": "28 Rue Larbi Ben M'hidi", "city": "Annaba"},
     {"street": "3 Avenue de l'ALN", "city": "Tizi Ouzou"},
     {"street": "55 Rue Abane Ramdane", "city": "Blida"},
-    {"street": "12 Cité Amirouche", "city": "Sétif"},
-    {"street": "9 Rue des Frères Arbaoui", "city": "Tlemcen"},
 ]
 
 MENU_CATEGORIES = [
@@ -877,15 +827,6 @@ PROMOTIONS = [
         "Menu du soir - réduit de 30% de 18h à 20h",
     ),
     (
-        "Menu Dégustation",
-        "DISCOUNT",
-        "PERCENTAGE",
-        20.0,
-        0,
-        60,
-        "Menu dégustation à 20% de réduction pour les groupes de 4+",
-    ),
-    (
         "Spécial Couscous",
         "DISCOUNT",
         "PERCENTAGE",
@@ -893,24 +834,6 @@ PROMOTIONS = [
         0,
         30,
         "Réduction de 15% sur tous les couscous le vendredi",
-    ),
-    (
-        "Fidélité Ramadan",
-        "DISCOUNT",
-        "PERCENTAGE",
-        25.0,
-        5.0,
-        90,
-        "25% de réduction pour les clients fidèles pendant le Ramadan",
-    ),
-    (
-        "Découverte",
-        "DISCOUNT",
-        "PERCENTAGE",
-        50.0,
-        0,
-        14,
-        "Première visite : 50% de réduction sur un plat traditionnel",
     ),
 ]
 
@@ -963,6 +886,7 @@ def seed_postgres():
     t_oi = tables["order_items"]
     t_review = tables["reviews"]
     t_reservation = tables["reservations"]
+    t_txn = tables["loyalty_transactions"]
     t_settings = tables["platform_settings"]
 
     # Clear existing data — use raw psycopg2 to avoid SQLAlchemy transaction issues
@@ -1035,7 +959,8 @@ def seed_postgres():
                 t_resto.select().with_only_columns(t_resto.c.id).order_by(t_resto.c.id)
             ).fetchall()
         ]
-        logger.info(f" {len(resto_ids)} restaurants seeded")
+        n_restos = len(resto_ids)
+        logger.info(f" {n_restos} restaurants seeded")
 
         # ── Users ────
         user_rows = []
@@ -1070,24 +995,19 @@ def seed_postgres():
                     "updatedAt": NOW,
                 }
             )
-        # Staff — 2 per restaurant
+        # Staff — 4 per restaurant
+        n_restos = len(resto_ids)
         staff_roles = ["WAITER", "WAITER", "CHEF", "CHEF"]
-        for ri in range(4):
+        for ri in range(n_restos):
             for si in range(4):
-                s = (
-                    USERS["staff"][ri * 2 + si % 4]
-                    if ri * 2 + si % 4 < 8
-                    else USERS["staff"][si]
-                )
-                idx = ri * 4 + si
-                s = USERS["staff"][idx % 8]
+                s = USERS["staff"][ri * 4 + si]
                 email = (
                     f"{s['firstName'].lower()}.{s['lastName'].lower()}.r{ri}@mayda.dz"
                 )
                 user_rows.append(
                     {
                         "email": email,
-                        "phone": 722222221 + idx,
+                        "phone": s["phone"],
                         "firstName": f"{s['firstName']}",
                         "lastName": f"{s['lastName']}",
                         "role": staff_roles[si],
@@ -1140,8 +1060,8 @@ def seed_postgres():
 
         # ── Tables ────
         table_count = 0
-        for ri in range(4):
-            for i in range(1, 13):
+        for ri in range(n_restos):
+            for i in range(1, 16):
                 cap = random.choice([2, 4, 4, 6, 8])
                 conn.execute(
                     t_table.insert().values(
@@ -1167,7 +1087,7 @@ def seed_postgres():
         all_inv_ids = []
         dish_to_inv_map = {}  # dish_name → list of (inv_name, qty)
 
-        for ri in range(4):
+        for ri in range(n_restos):
             resto_name = RESTAURANTS[ri]["name"]
             conn.execute(
                 t_menu.insert().values(
@@ -1427,7 +1347,7 @@ def seed_postgres():
                         dish_to_inv_map[name] = list(set(matched))
 
         # ── Inventory ────
-        for ri in range(4):
+        for ri in range(n_restos):
             for inv_item in INVENTORY:
                 iname, iunit, imin, icost, isupplier, idesc = inv_item
                 stock = random.randint(imin * 2, imin * 5)
@@ -1439,7 +1359,6 @@ def seed_postgres():
                         unit=iunit,
                         currentStock=stock,
                         minStock=imin,
-                        maxStock=imin * 3,
                         unitCost=icost,
                         supplier=isupplier,
                         createdAt=NOW,
@@ -1457,7 +1376,7 @@ def seed_postgres():
 
         # ── Ingredient Links (DishInventoryLink) ────
         link_count = 0
-        for ri in range(4):
+        for ri in range(n_restos):
             # Fetch dishes and inventory for this restaurant
             restaurant_dishes = conn.execute(
                 t_dish.select()
@@ -1487,7 +1406,7 @@ def seed_postgres():
 
         # ── Promotions ────
         promo_count = 0
-        for ri in range(4):
+        for ri in range(n_restos):
             for p in PROMOTIONS:
                 title, ptype, dtype, dval, min_amt, days, pdesc = p
                 conn.execute(
@@ -1525,8 +1444,8 @@ def seed_postgres():
 
         # ── Reservations ────
         res_count = 0
-        for ci in range(min(4, len(client_users))):
-            ri = ci % 4
+        for ci in range(min(n_restos, len(client_users))):
+            ri = ci % n_restos
             table_result = conn.execute(
                 t_table.select().where(t_table.c.restaurantId == resto_ids[ri]).limit(1)
             ).fetchone()
@@ -1548,14 +1467,15 @@ def seed_postgres():
                 res_count += 1
         logger.info(f" {res_count} reservations seeded")
 
-        # ── Orders + Order Items + Reviews ────
+        # ── Orders + Order Items + Reviews + Loyalty Transactions ────
         order_count = 0
         review_count = 0
+        completed_orders = []
 
         for days_ago in [0, 1, 2, 3, 5, 7, 10, 14, 21, 28]:
             for slot in range(6):
                 ci = (days_ago + slot) % len(client_users)
-                ri = (days_ago + slot) % 4
+                ri = (days_ago + slot) % n_restos
                 cu = client_users[ci]
 
                 # Pick a random table for this restaurant
@@ -1603,6 +1523,8 @@ def seed_postgres():
                 order_type = random.choice(["DINE_IN", "TAKEAWAY", "DELIVERY"])
                 order_num = f"ORD-{1000 + order_count}"
 
+                delivery_est = confirmed_at + timedelta(minutes=random.randint(20, 50))
+
                 conn.execute(
                     t_order.insert().values(
                         orderNumber=order_num,
@@ -1613,6 +1535,8 @@ def seed_postgres():
                         status=status_val,
                         subtotal=round(subtotal, 2),
                         totalAmount=total,
+                        deliveryFee=round(random.uniform(0, 3), 2),
+                        estimatedDeliveryTime=delivery_est,
                         paymentStatus=pay_status,
                         orderTime=timestamp,
                         confirmedAt=confirmed_at,
@@ -1632,6 +1556,15 @@ def seed_postgres():
                     .with_only_columns(t_order.c.id)
                     .where(t_order.c.orderNumber == order_num)
                 ).scalar()
+
+                if status_val == "COMPLETED":
+                    completed_orders.append({
+                        "userId": cu.id,
+                        "restaurantId": resto_ids[ri],
+                        "totalAmount": total,
+                        "orderId": order_id,
+                        "orderNumber": order_num,
+                    })
 
                 for dish_row in selected:
                     qty = random.randint(1, 3)
@@ -1675,6 +1608,31 @@ def seed_postgres():
                     review_count += 1
 
         logger.info(f" {order_count} orders and {review_count} reviews seeded")
+
+        # ── Loyalty Transactions ────
+        txn_count = 0
+        completed_user_ids = set()
+        for o in completed_orders:
+            completed_user_ids.add(o["userId"])
+        loyalty_cards_db = conn.execute(
+            t_loyalty.select().with_only_columns(t_loyalty.c.id, t_loyalty.c.userId)
+        ).fetchall()
+        for order_row in completed_orders:
+            lc = next((lc for lc in loyalty_cards_db if lc.userId == order_row["userId"]), None)
+            if lc:
+                points_earned = int(order_row["totalAmount"])
+                conn.execute(
+                    t_txn.insert().values(
+                        loyaltyCardId=lc.id,
+                        restaurantId=order_row["restaurantId"],
+                        points=points_earned,
+                        type="EARNED",
+                        description=f"Points gagnés sur la commande {order_row['orderNumber']}",
+                        createdAt=NOW,
+                    )
+                )
+                txn_count += 1
+        logger.info(f" {txn_count} loyalty transactions seeded")
 
     engine.dispose()
     logger.info("PostgreSQL seeding complete ✅")
