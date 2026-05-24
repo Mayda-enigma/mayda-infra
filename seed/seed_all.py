@@ -1354,12 +1354,12 @@ def seed_postgres():
                 conn.execute(
                     t_inv.insert().values(
                         restaurantId=resto_ids[ri],
-                        itemName=iname,
+                        name=iname,
                         description=idesc,
                         unit=iunit,
                         currentStock=stock,
-                        minStock=imin,
-                        unitCost=icost,
+                        minimumStock=imin,
+                        unitPrice=icost,
                         supplier=isupplier,
                         createdAt=NOW,
                         updatedAt=NOW,
@@ -1369,7 +1369,7 @@ def seed_postgres():
                     t_inv.select()
                     .with_only_columns(t_inv.c.id)
                     .where(t_inv.c.restaurantId == resto_ids[ri])
-                    .where(t_inv.c.itemName == iname)
+                    .where(t_inv.c.name == iname)
                 ).scalar()
                 all_inv_ids.append(inv_id)
         logger.info(f" Inventory seeded for {len(resto_ids)} restaurants")
@@ -1387,7 +1387,7 @@ def seed_postgres():
             restaurant_inv = conn.execute(
                 t_inv.select().where(t_inv.c.restaurantId == resto_ids[ri])
             ).fetchall()
-            inv_by_name = {row.itemName: row.id for row in restaurant_inv}
+            inv_by_name = {row.name: row.id for row in restaurant_inv}
 
             for dish_row in restaurant_dishes:
                 if dish_row.name in dish_to_inv_map:
