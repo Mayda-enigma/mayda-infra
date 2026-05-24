@@ -271,6 +271,16 @@ DISHES = {
             "https://i.redd.it/f48zgvf4qc461.jpg",
         ),
     ],
+    "Boissons Chaudes": [
+        (
+            "Thé à la Menthe",
+            "Thé vert à la menthe fraîche, servi dans un verre traditionnel",
+            2.00,
+            5,
+            4.9,
+            "https://mtp-gobelets.com/wp-content/uploads/2023/07/mtp-gobelet-produits-algerie_0003_IMG_2881-540x540.jpg",
+        ),
+    ],
 }
 
 # Inventory items (ingredients for Algerian cooking)
