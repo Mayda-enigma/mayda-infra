@@ -19,8 +19,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
     networks:
       - mayda_network
     healthcheck:
@@ -90,8 +88,6 @@ services:
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       WHISPER_MODEL: ${WHISPER_MODEL:-tiny}
-    ports:
-      - "${AI_PORT:-8101}:8101"
     networks:
       - mayda_network
     healthcheck:
