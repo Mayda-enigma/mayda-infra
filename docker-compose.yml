@@ -31,6 +31,7 @@ services:
   # ── Backend API (FastAPI) ─────────────────────────
   mayda-backend:
     image: ghcr.io/mayda-enigma/mayda-backend:latest
+    pull_policy: always
     platform: linux/amd64
     restart: unless-stopped
     depends_on:
@@ -71,6 +72,7 @@ services:
   # ── AI Service (FastAPI + Whisper + ChromaDB) ────
   mayda-ai:
     image: ghcr.io/mayda-enigma/mayda-ai:latest
+    pull_policy: always
     platform: linux/amd64
     restart: unless-stopped
     depends_on:
