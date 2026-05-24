@@ -1,0 +1,146 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Mayda Infra — Global Orchestration
+#
+# One command to run everything:
+#   docker compose up -d
+#
+# Dokploy-ready: uses named volumes (backup-compatible),
+# healthchain dependencies, and env_file injection.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+services:
+  # ── PostgreSQL ────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: mayda-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mayda_db
+      POSTGRES_USER: mayda_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    networks:
+      - mayda_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mayda_user -d mayda_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Backend API (FastAPI) ─────────────────────────
+  mayda-backend:
+    image: ghcr.io/mayda-enigma/mayda-backend:latest
+    container_name: mayda-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://mayda_user:${POSTGRES_PASSWORD}@postgres:5432/mayda_db
+      SECRET_KEY: ${SECRET_KEY:?SECRET_KEY is required}
+      SERVICE_TOKEN: ${SERVICE_TOKEN:?SERVICE_TOKEN is required}
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
+      REFRESH_TOKEN_EXPIRE_DAYS: ${REFRESH_TOKEN_EXPIRE_DAYS:-7}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      BACKEND_CORS_ORIGIN_REGEX: ${BACKEND_CORS_ORIGIN_REGEX:-.*}
+      RECOMMENDATION_SERVICE_URL: http://mayda-ai:8101
+      SEARCH_SERVICE_URL: http://mayda-ai:8101
+      INVENTORY_SERVICE_URL: http://mayda-ai:8101
+      VOICE_SERVICE_URL: http://mayda-ai:8101
+      ANOMALY_SERVICE_URL: http://mayda-ai:8101
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER:-}
+      GUIDINI_APP_KEY: ${GUIDINI_APP_KEY:-}
+      GUIDINI_API_KEY: ${GUIDINI_API_KEY:-}
+    ports:
+      - "${BACKEND_PORT:-8001}:8001"
+    networks:
+      - mayda_network
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
+    volumes:
+      - api_logs:/app/logs
+
+  # ── AI Service (FastAPI + Whisper + ChromaDB) ────
+  mayda-ai:
+    image: ghcr.io/mayda-enigma/mayda-ai:latest
+    container_name: mayda-ai
+    restart: unless-stopped
+    depends_on:
+      mayda-backend:
+        condition: service_healthy
+    environment:
+      SERVICE_TOKEN: ${SERVICE_TOKEN:?SERVICE_TOKEN is required}
+      BACKEND_API_URL: http://mayda-backend:8001
+      BACKEND_API_TIMEOUT: ${BACKEND_API_TIMEOUT:-30}
+      GATEWAY_ORIGIN: ${GATEWAY_ORIGIN:-http://localhost:3000}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      PORT: 8101
+      LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
+      LLM_MODEL: ${LLM_MODEL:-gemini-2.0-flash}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      WHISPER_MODEL: ${WHISPER_MODEL:-tiny}
+    ports:
+      - "${AI_PORT:-8101}:8101"
+    networks:
+      - mayda_network
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8101/api/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 180s
+      retries: 5
+    volumes:
+      - ai_inventory_data:/data
+      - ai_chroma_data:/chroma
+      - ai_hf_cache:/cache/hf
+
+  # ── Seed (one-shot data initializer) ──────────────
+  seed:
+    build:
+      context: ./seed
+      dockerfile: Dockerfile
+    container_name: mayda-seed
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mayda-backend:
+        condition: service_healthy
+      mayda-ai:
+        condition: service_healthy
+    environment:
+      POSTGRES_URL: postgresql://mayda_user:${POSTGRES_PASSWORD}@postgres:5432/mayda_db
+      AI_SQLITE_PATH: /data/inventory.db
+    networks:
+      - mayda_network
+    volumes:
+      - ai_inventory_data:/data
+
+networks:
+  mayda_network:
+    name: mayda_network
+    driver: bridge
+
+volumes:
+  postgres_data:
+    name: mayda_postgres_data
+  api_logs:
+    name: mayda_api_logs
+  ai_inventory_data:
+    name: mayda_ai_inventory_data
+  ai_chroma_data:
+    name: mayda_ai_chroma_data
+  ai_hf_cache:
+    name: mayda_ai_hf_cache
