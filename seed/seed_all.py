@@ -286,11 +286,11 @@ INVENTORY = [
 ]
 
 PROMOTIONS = [
-    ("Happy Hour", "réduction", "POURCENTAGE", 30.0, 0, 30, "Menu du soir - réduit de 30% de 18h à 20h"),
-    ("Menu Dégustation", "RÉDUCTION", "POURCENTAGE", 20.0, 0, 60, "Menu dégustation à 20% de réduction pour les groupes de 4+"),
-    ("Spécial Couscous", "RÉDUCTION", "POURCENTAGE", 15.0, 0, 30, "Réduction de 15% sur tous les couscous le vendredi"),
-    ("Fidélité Ramadan", "RÉDUCTION", "POURCENTAGE", 25.0, 5.0, 90, "25% de réduction pour les clients fidèles pendant le Ramadan"),
-    ("Découverte", "RÉDUCTION", "POURCENTAGE", 50.0, 0, 14, "Première visite : 50% de réduction sur un plat traditionnel"),
+    ("Happy Hour", "HAPPY_HOUR", "PERCENTAGE", 30.0, 0, 30, "Menu du soir - réduit de 30% de 18h à 20h"),
+    ("Menu Dégustation", "DISCOUNT", "PERCENTAGE", 20.0, 0, 60, "Menu dégustation à 20% de réduction pour les groupes de 4+"),
+    ("Spécial Couscous", "DISCOUNT", "PERCENTAGE", 15.0, 0, 30, "Réduction de 15% sur tous les couscous le vendredi"),
+    ("Fidélité Ramadan", "DISCOUNT", "PERCENTAGE", 25.0, 5.0, 90, "25% de réduction pour les clients fidèles pendant le Ramadan"),
+    ("Découverte", "DISCOUNT", "PERCENTAGE", 50.0, 0, 14, "Première visite : 50% de réduction sur un plat traditionnel"),
 ]
 
 LANGS = ["fr", "ar", "ber", "en", "es", "it", "de", "zh"]
@@ -632,11 +632,11 @@ def seed_postgres():
         promo_count = 0
         for ri in range(4):
             for p in PROMOTIONS:
-                title, ptype, dtype, dval, min_amt, days = p
+                title, ptype, dtype, dval, min_amt, days, pdesc = p
                 conn.execute(t_promo.insert().values(
                     restaurantId=resto_ids[ri],
                     title=title,
-                    description=title,
+                    description=pdesc,
                     type=ptype,
                     discountType=dtype,
                     discountValue=dval,
