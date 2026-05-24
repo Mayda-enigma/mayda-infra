@@ -12,7 +12,6 @@ services:
   # ── PostgreSQL ────────────────────────────────────
   postgres:
     image: postgres:15-alpine
-    container_name: mayda-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: mayda_db
@@ -35,7 +34,6 @@ services:
   mayda-backend:
     image: ghcr.io/mayda-enigma/mayda-backend:latest
     platform: linux/amd64
-    container_name: mayda-backend
     restart: unless-stopped
     depends_on:
       postgres:
@@ -76,7 +74,6 @@ services:
   mayda-ai:
     image: ghcr.io/mayda-enigma/mayda-ai:latest
     platform: linux/amd64
-    container_name: mayda-ai
     restart: unless-stopped
     depends_on:
       mayda-backend:
@@ -113,7 +110,6 @@ services:
     build:
       context: ./seed
       dockerfile: Dockerfile
-    container_name: mayda-seed
     restart: "no"
     depends_on:
       postgres:
